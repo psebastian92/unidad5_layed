@@ -245,28 +245,49 @@
     </div>
 
     <div class="subtitulo">Código completo</div>
-    <div class="codigo-bloque">
-      <div class="codigo-header"><span class="codigo-lang">JAVA</span><span class="codigo-desc">Ordenamiento burbuja con medición de tiempo</span></div>
-      <pre><span class="kw">static</span> <span class="tp">void</span> <span class="fn">ordenarBurbuja</span>(<span class="tp">int</span>[] numeros) {
-    <span class="tp">int</span> n = numeros.<span class="fn">length</span>;
-    <span class="kw">for</span> (<span class="tp">int</span> i = <span class="nm">0</span>; i &lt; n - <span class="nm">1</span>; i++) {
-        <span class="kw">for</span> (<span class="tp">int</span> j = <span class="nm">0</span>; j &lt; n - i - <span class="nm">1</span>; j++) {
-            <span class="kw">if</span> (numeros[j] &gt; numeros[j + <span class="nm">1</span>]) {
-                <span class="cm">// Intercambio con variable auxiliar</span>
-                <span class="tp">int</span> aux = numeros[j];
-                numeros[j] = numeros[j + <span class="nm">1</span>];
-                numeros[j + <span class="nm">1</span>] = aux;
+    <div class="comparacion">
+      <div class="comp-bloque">
+        <div class="comp-header" style="background:rgba(249,115,22,.15);color:#fb923c;">Array  int[]</div>
+        <pre style="background:rgba(249,115,22,.04);border:1px solid rgba(249,115,22,.2);border-top:none;border-radius:0 0 10px 10px;padding:14px;font-size:12px;font-family:'JetBrains Mono',monospace;line-height:1.8;overflow-x:auto;"><span class="kw">static</span> <span class="tp">void</span> <span class="fn">ordenarBurbuja</span>(<span class="tp">int</span>[] nums) {
+    <span class="tp">int</span> n = nums.length;
+    <span class="kw">for</span> (<span class="tp">int</span> i = <span class="nm">0</span>; i &lt; n-<span class="nm">1</span>; i++) {
+        <span class="kw">for</span> (<span class="tp">int</span> j = <span class="nm">0</span>; j &lt; n-i-<span class="nm">1</span>; j++) {
+            <span class="kw">if</span> (nums[j] &gt; nums[j+<span class="nm">1</span>]) {
+                <span class="tp">int</span> aux  = nums[j];
+                nums[j]   = nums[j+<span class="nm">1</span>];
+                nums[j+<span class="nm">1</span>] = aux;
             }
         }
     }
 }
 
-<span class="kw">static</span> <span class="tp">long</span> <span class="fn">medirBurbuja</span>(<span class="tp">int</span>[] numeros) {
-    <span class="tp">long</span> inicio = System.<span class="fn">nanoTime</span>();
-    <span class="fn">ordenarBurbuja</span>(numeros);
-    <span class="tp">long</span> fin = System.<span class="fn">nanoTime</span>();
-    <span class="kw">return</span> fin - inicio;  <span class="cm">// tiempo en nanosegundos</span>
-}</pre>
+<span class="cm">// Uso en main():</span>
+<span class="tp">int</span>[] nums = {<span class="nm">5</span>,<span class="nm">3</span>,<span class="nm">8</span>,<span class="nm">1</span>,<span class="nm">4</span>};
+<span class="fn">ordenarBurbuja</span>(nums);
+<span class="cm">// nums → [1, 3, 4, 5, 8]</span></pre>
+      </div>
+      <div class="comp-bloque">
+        <div class="comp-header" style="background:rgba(56,189,248,.15);color:#38bdf8;">ArrayList&lt;Integer&gt;</div>
+        <pre style="background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.2);border-top:none;border-radius:0 0 10px 10px;padding:14px;font-size:12px;font-family:'JetBrains Mono',monospace;line-height:1.8;overflow-x:auto;"><span class="kw">static</span> <span class="tp">void</span> <span class="fn">ordenarBurbuja</span>(
+        <span class="tp">ArrayList</span>&lt;<span class="tp">Integer</span>&gt; nums) {
+    <span class="tp">int</span> n = nums.<span class="fn">size</span>();
+    <span class="kw">for</span> (<span class="tp">int</span> i = <span class="nm">0</span>; i &lt; n-<span class="nm">1</span>; i++) {
+        <span class="kw">for</span> (<span class="tp">int</span> j = <span class="nm">0</span>; j &lt; n-i-<span class="nm">1</span>; j++) {
+            <span class="kw">if</span> (nums.<span class="fn">get</span>(j) &gt; nums.<span class="fn">get</span>(j+<span class="nm">1</span>)) {
+                <span class="tp">int</span> aux = nums.<span class="fn">get</span>(j);
+                nums.<span class="fn">set</span>(j,   nums.<span class="fn">get</span>(j+<span class="nm">1</span>));
+                nums.<span class="fn">set</span>(j+<span class="nm">1</span>, aux);
+            }
+        }
+    }
+}
+
+<span class="cm">// Uso en main():</span>
+<span class="tp">ArrayList</span>&lt;<span class="tp">Integer</span>&gt; nums = <span class="kw">new</span> <span class="fn">ArrayList</span>&lt;&gt;();
+nums.<span class="fn">add</span>(<span class="nm">5</span>); nums.<span class="fn">add</span>(<span class="nm">3</span>); nums.<span class="fn">add</span>(<span class="nm">8</span>);
+<span class="fn">ordenarBurbuja</span>(nums);
+<span class="cm">// nums → [1, 3, 4, 5, 8]</span></pre>
+      </div>
     </div>
 
     <div class="tip">
@@ -338,28 +359,48 @@
     </div>
 
     <div class="subtitulo">Código completo</div>
-    <div class="codigo-bloque">
-      <div class="codigo-header"><span class="codigo-lang">JAVA</span><span class="codigo-desc">Ordenamiento por inserción con medición de tiempo</span></div>
-      <pre><span class="kw">static</span> <span class="tp">void</span> <span class="fn">ordenarInsercion</span>(<span class="tp">int</span>[] numeros) {
-    <span class="tp">int</span> n = numeros.<span class="fn">length</span>;
-    <span class="kw">for</span> (<span class="tp">int</span> i = <span class="nm">1</span>; i &lt; n; i++) {
-        <span class="tp">int</span> actual = numeros[i];  <span class="cm">// elemento a insertar</span>
+    <div class="comparacion">
+      <div class="comp-bloque">
+        <div class="comp-header" style="background:rgba(249,115,22,.15);color:#fb923c;">Array  int[]</div>
+        <pre style="background:rgba(249,115,22,.04);border:1px solid rgba(249,115,22,.2);border-top:none;border-radius:0 0 10px 10px;padding:14px;font-size:12px;font-family:'JetBrains Mono',monospace;line-height:1.8;overflow-x:auto;"><span class="kw">static</span> <span class="tp">void</span> <span class="fn">ordenarInsercion</span>(<span class="tp">int</span>[] nums) {
+    <span class="kw">for</span> (<span class="tp">int</span> i = <span class="nm">1</span>; i &lt; nums.length; i++) {
+        <span class="tp">int</span> actual = nums[i];
         <span class="tp">int</span> j = i - <span class="nm">1</span>;
-        <span class="cm">// Mover elementos mayores una posición a la derecha</span>
-        <span class="kw">while</span> (j &gt;= <span class="nm">0</span> &amp;&amp; numeros[j] &gt; actual) {
-            numeros[j + <span class="nm">1</span>] = numeros[j];
+        <span class="kw">while</span> (j &gt;= <span class="nm">0</span> &amp;&amp; nums[j] &gt; actual) {
+            nums[j+<span class="nm">1</span>] = nums[j];
             j--;
         }
-        numeros[j + <span class="nm">1</span>] = actual;  <span class="cm">// insertar en su lugar</span>
+        nums[j+<span class="nm">1</span>] = actual;
     }
 }
 
-<span class="kw">static</span> <span class="tp">long</span> <span class="fn">medirInsercion</span>(<span class="tp">int</span>[] numeros) {
-    <span class="tp">long</span> inicio = System.<span class="fn">nanoTime</span>();
-    <span class="fn">ordenarInsercion</span>(numeros);
-    <span class="tp">long</span> fin = System.<span class="fn">nanoTime</span>();
-    <span class="kw">return</span> fin - inicio;
-}</pre>
+<span class="cm">// Uso en main():</span>
+<span class="tp">int</span>[] nums = {<span class="nm">5</span>,<span class="nm">3</span>,<span class="nm">8</span>,<span class="nm">1</span>,<span class="nm">4</span>};
+<span class="fn">ordenarInsercion</span>(nums);
+<span class="cm">// nums → [1, 3, 4, 5, 8]</span></pre>
+      </div>
+      <div class="comp-bloque">
+        <div class="comp-header" style="background:rgba(56,189,248,.15);color:#38bdf8;">ArrayList&lt;Integer&gt;</div>
+        <pre style="background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.2);border-top:none;border-radius:0 0 10px 10px;padding:14px;font-size:12px;font-family:'JetBrains Mono',monospace;line-height:1.8;overflow-x:auto;"><span class="kw">static</span> <span class="tp">void</span> <span class="fn">ordenarInsercion</span>(
+        <span class="tp">ArrayList</span>&lt;<span class="tp">Integer</span>&gt; nums) {
+    <span class="kw">for</span> (<span class="tp">int</span> i = <span class="nm">1</span>; i &lt; nums.<span class="fn">size</span>(); i++) {
+        <span class="tp">int</span> actual = nums.<span class="fn">get</span>(i);
+        <span class="tp">int</span> j = i - <span class="nm">1</span>;
+        <span class="kw">while</span> (j &gt;= <span class="nm">0</span> &amp;&amp;
+               nums.<span class="fn">get</span>(j) &gt; actual) {
+            nums.<span class="fn">set</span>(j+<span class="nm">1</span>, nums.<span class="fn">get</span>(j));
+            j--;
+        }
+        nums.<span class="fn">set</span>(j+<span class="nm">1</span>, actual);
+    }
+}
+
+<span class="cm">// Uso en main():</span>
+<span class="tp">ArrayList</span>&lt;<span class="tp">Integer</span>&gt; nums = <span class="kw">new</span> <span class="fn">ArrayList</span>&lt;&gt;();
+nums.<span class="fn">add</span>(<span class="nm">5</span>); nums.<span class="fn">add</span>(<span class="nm">3</span>); nums.<span class="fn">add</span>(<span class="nm">8</span>);
+<span class="fn">ordenarInsercion</span>(nums);
+<span class="cm">// nums → [1, 3, 4, 5, 8]</span></pre>
+      </div>
     </div>
 
     <div class="tip">
@@ -371,6 +412,46 @@
       <div class="errores-titulo">⚠ Errores frecuentes</div>
       <div class="error-item"><span class="error-icon">✗</span><span class="error-txt">Olvidar guardar <code>actual = numeros[i]</code> antes del while — si no, sobrescribís el valor y lo perdés para siempre.</span></div>
       <div class="error-item"><span class="error-icon">✗</span><span class="error-txt">No chequear <code>j &gt;= 0</code> en el while — cuando <code>j</code> llega a -1, accedés a <code>numeros[-1]</code> y obtenés excepción.</span></div>
+    </div>
+
+    <div class="subtitulo">Ejemplo con listas paralelas</div>
+    <p class="explicacion">Cuando ordenás listas paralelas (por ejemplo nombres y notas), cada vez que movés un elemento en una lista tenés que moverlo también en la otra para mantenerlas sincronizadas.</p>
+    <div class="codigo-bloque">
+      <div class="codigo-header"><span class="codigo-lang">JAVA</span><span class="codigo-desc">Inserción sobre listas paralelas — nombres y notas (mayor a menor)</span></div>
+      <pre><span class="kw">static</span> <span class="tp">void</span> <span class="fn">ordenarPorNota</span>(
+        <span class="tp">ArrayList</span>&lt;<span class="tp">String</span>&gt; nombres,
+        <span class="tp">ArrayList</span>&lt;<span class="tp">Integer</span>&gt; notas) {
+
+    <span class="kw">for</span> (<span class="tp">int</span> i = <span class="nm">1</span>; i &lt; notas.<span class="fn">size</span>(); i++) {
+        <span class="tp">int</span>    notaActual   = notas.<span class="fn">get</span>(i);
+        <span class="tp">String</span> nombreActual = nombres.<span class="fn">get</span>(i);
+        <span class="tp">int</span> j = i - <span class="nm">1</span>;
+
+        <span class="cm">// Mayor a menor: movemos cuando la nota de la izq es MENOR</span>
+        <span class="kw">while</span> (j &gt;= <span class="nm">0</span> &amp;&amp; notas.<span class="fn">get</span>(j) &lt; notaActual) {
+            notas.<span class="fn">set</span>(j + <span class="nm">1</span>,   notas.<span class="fn">get</span>(j));    <span class="cm">// mover nota</span>
+            nombres.<span class="fn">set</span>(j + <span class="nm">1</span>, nombres.<span class="fn">get</span>(j));  <span class="cm">// mover nombre (mismo índice)</span>
+            j--;
+        }
+        notas.<span class="fn">set</span>(j + <span class="nm">1</span>,   notaActual);    <span class="cm">// insertar nota en su lugar</span>
+        nombres.<span class="fn">set</span>(j + <span class="nm">1</span>, nombreActual);  <span class="cm">// insertar nombre en su lugar</span>
+    }
+}
+
+<span class="cm">// Uso en main():</span>
+<span class="tp">ArrayList</span>&lt;<span class="tp">String</span>&gt;  nombres = <span class="kw">new</span> <span class="fn">ArrayList</span>&lt;&gt;();
+<span class="tp">ArrayList</span>&lt;<span class="tp">Integer</span>&gt; notas   = <span class="kw">new</span> <span class="fn">ArrayList</span>&lt;&gt;();
+nombres.<span class="fn">add</span>(<span class="st">"Ana"</span>);   notas.<span class="fn">add</span>(<span class="nm">7</span>);
+nombres.<span class="fn">add</span>(<span class="st">"Luis"</span>);  notas.<span class="fn">add</span>(<span class="nm">9</span>);
+nombres.<span class="fn">add</span>(<span class="st">"Sol"</span>);   notas.<span class="fn">add</span>(<span class="nm">6</span>);
+<span class="fn">ordenarPorNota</span>(nombres, notas);
+<span class="cm">// nombres → [Luis, Ana, Sol]</span>
+<span class="cm">// notas   → [9,    7,   6  ]</span></pre>
+    </div>
+
+    <div class="tip">
+      <div class="tip-titulo">Clave: las dos listas se mueven juntas</div>
+      <p>Cuando usás <code>set(j+1, get(j))</code> en notas, hacés lo mismo en nombres en el mismo paso. Si te olvidás de mover una, los nombres y notas quedan desincronizados — Ana podría terminar con la nota de Luis.</p>
     </div>
 
     <div class="links-bloque">
@@ -536,7 +617,7 @@ System.<span class="fn">out</span>.println(<span class="st">"Inserción: "</span
         <!-- Encontrado -->
         <rect x="232" y="26" width="64" height="58" rx="6" fill="#0f2a1a" stroke="#22c55e" stroke-width="2.5"/>
         <text x="264" y="60" font-family="JetBrains Mono,monospace" font-size="22" fill="#4ade80" text-anchor="middle" font-weight="600">4</text>
-        <text x="264" y="90" font-family="Sora,sans-serif" font-size="10" fill="#4ade80" text-anchor="middle">[3] ✓ encontrado</text>
+        <text x="264" y="90" font-family="Sora,sans-serif" font-size="10" fill="#4ade80" text-anchor="middle">[3] encontrado ✓</text>
 
         <!-- No revisado -->
         <rect x="302" y="34" width="58" height="44" rx="6" fill="#1e1e38" stroke="#1e1e38" stroke-width="1"/>
@@ -560,29 +641,95 @@ System.<span class="fn">out</span>.println(<span class="st">"Inserción: "</span
     </div>
 
     <div class="subtitulo">Código completo</div>
-    <div class="codigo-bloque">
-      <div class="codigo-header"><span class="codigo-lang">JAVA</span><span class="codigo-desc">Búsqueda lineal</span></div>
-      <pre><span class="kw">static</span> <span class="tp">int</span> <span class="fn">busquedaLineal</span>(<span class="tp">int</span>[] numeros, <span class="tp">int</span> objetivo) {
-    <span class="kw">for</span> (<span class="tp">int</span> i = <span class="nm">0</span>; i &lt; numeros.length; i++) {
-        <span class="kw">if</span> (numeros[i] == objetivo) {
-            <span class="kw">return</span> i;  <span class="cm">// encontrado: retornamos la posición</span>
+    <div class="comparacion">
+      <div class="comp-bloque">
+        <div class="comp-header" style="background:rgba(249,115,22,.15);color:#fb923c;">Array  int[]</div>
+        <pre style="background:rgba(249,115,22,.04);border:1px solid rgba(249,115,22,.2);border-top:none;border-radius:0 0 10px 10px;padding:14px;font-size:12px;font-family:'JetBrains Mono',monospace;line-height:1.8;overflow-x:auto;"><span class="kw">static</span> <span class="tp">int</span> <span class="fn">busquedaLineal</span>(
+        <span class="tp">int</span>[] nums, <span class="tp">int</span> objetivo) {
+    <span class="kw">for</span> (<span class="tp">int</span> i = <span class="nm">0</span>; i &lt; nums.length; i++) {
+        <span class="kw">if</span> (nums[i] == objetivo) {
+            <span class="kw">return</span> i;
         }
     }
-    <span class="kw">return</span> <span class="nm">-1</span>;  <span class="cm">// no encontrado</span>
+    <span class="kw">return</span> <span class="nm">-1</span>;
 }
 
-<span class="kw">static</span> <span class="tp">void</span> <span class="fn">mostrarResultado</span>(<span class="tp">int</span> pos, <span class="tp">int</span> objetivo) {
-    <span class="kw">if</span> (pos != <span class="nm">-1</span>) {
-        System.<span class="fn">out</span>.println(<span class="st">"El "</span> + objetivo + <span class="st">" está en la posición "</span> + pos);
-    } <span class="kw">else</span> {
-        System.<span class="fn">out</span>.println(<span class="st">"El "</span> + objetivo + <span class="st">" no fue encontrado."</span>);
+<span class="kw">static</span> <span class="tp">void</span> <span class="fn">mostrarResultado</span>(
+        <span class="tp">int</span> pos, <span class="tp">int</span> objetivo) {
+    <span class="kw">if</span> (pos != <span class="nm">-1</span>)
+        System.<span class="fn">out</span>.println(<span class="st">"Posición: "</span> + pos);
+    <span class="kw">else</span>
+        System.<span class="fn">out</span>.println(<span class="st">"No encontrado"</span>);
+}
+
+<span class="cm">// Uso en main():</span>
+<span class="tp">int</span>[] nums = {<span class="nm">3</span>,<span class="nm">1</span>,<span class="nm">8</span>,<span class="nm">4</span>,<span class="nm">7</span>};
+<span class="tp">int</span> pos = <span class="fn">busquedaLineal</span>(nums, <span class="nm">4</span>);
+<span class="cm">// pos → 3</span></pre>
+      </div>
+      <div class="comp-bloque">
+        <div class="comp-header" style="background:rgba(56,189,248,.15);color:#38bdf8;">ArrayList&lt;Integer&gt;</div>
+        <pre style="background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.2);border-top:none;border-radius:0 0 10px 10px;padding:14px;font-size:12px;font-family:'JetBrains Mono',monospace;line-height:1.8;overflow-x:auto;"><span class="kw">static</span> <span class="tp">int</span> <span class="fn">busquedaLineal</span>(
+        <span class="tp">ArrayList</span>&lt;<span class="tp">Integer</span>&gt; nums,
+        <span class="tp">int</span> objetivo) {
+    <span class="kw">for</span> (<span class="tp">int</span> i = <span class="nm">0</span>; i &lt; nums.<span class="fn">size</span>(); i++) {
+        <span class="kw">if</span> (nums.<span class="fn">get</span>(i) == objetivo) {
+            <span class="kw">return</span> i;
+        }
     }
-}</pre>
+    <span class="kw">return</span> <span class="nm">-1</span>;
+}
+
+<span class="cm">// O simplemente con indexOf():</span>
+<span class="tp">int</span> pos = nums.<span class="fn">indexOf</span>(objetivo);
+<span class="cm">// hace exactamente lo mismo ↑</span>
+
+<span class="cm">// Uso en main():</span>
+<span class="tp">ArrayList</span>&lt;<span class="tp">Integer</span>&gt; nums = <span class="kw">new</span> <span class="fn">ArrayList</span>&lt;&gt;();
+nums.<span class="fn">add</span>(<span class="nm">3</span>); nums.<span class="fn">add</span>(<span class="nm">1</span>); nums.<span class="fn">add</span>(<span class="nm">8</span>);
+<span class="tp">int</span> pos = <span class="fn">busquedaLineal</span>(nums, <span class="nm">8</span>);
+<span class="cm">// pos → 2</span></pre>
+      </div>
     </div>
 
     <div class="tip">
       <div class="tip-titulo">Conexión con indexOf()</div>
       <p>Lo que hacen <code>busquedaLineal()</code> e <code>indexOf()</code> es exactamente lo mismo: recorrer, comparar, retornar la posición o -1. La diferencia es que nosotros lo programamos a mano para entender cómo funciona por dentro.</p>
+    </div>
+
+    <div class="subtitulo">Ejemplo con listas paralelas</div>
+    <p class="explicacion">Con listas paralelas, buscás por nombre usando <code>indexOf()</code> y con esa posición accedés directamente a la nota — sin recorrer la segunda lista.</p>
+    <div class="codigo-bloque">
+      <div class="codigo-header"><span class="codigo-lang">JAVA</span><span class="codigo-desc">Búsqueda lineal sobre listas paralelas — buscar alumno por nombre</span></div>
+      <pre><span class="kw">static</span> <span class="tp">void</span> <span class="fn">buscarAlumno</span>(
+        <span class="tp">ArrayList</span>&lt;<span class="tp">String</span>&gt;  nombres,
+        <span class="tp">ArrayList</span>&lt;<span class="tp">Integer</span>&gt; notas) {
+
+    System.<span class="fn">out</span>.print(<span class="st">"Nombre a buscar: "</span>);
+    <span class="tp">String</span> nombre = sc.<span class="fn">nextLine</span>();
+
+    <span class="tp">int</span> pos = nombres.<span class="fn">indexOf</span>(nombre);  <span class="cm">// búsqueda lineal</span>
+
+    <span class="kw">if</span> (pos != <span class="nm">-1</span>) {
+        System.<span class="fn">out</span>.println(nombre + <span class="st">" → nota: "</span> + notas.<span class="fn">get</span>(pos));
+    } <span class="kw">else</span> {
+        System.<span class="fn">out</span>.println(<span class="st">"No se encontró ese alumno."</span>);
+    }
+}
+
+<span class="cm">// Uso en main():</span>
+<span class="cm">// nombres: [Luis, Ana, Sol]</span>
+<span class="cm">// notas:   [9,    7,   6  ]</span>
+<span class="fn">buscarAlumno</span>(nombres, notas);
+<span class="cm">// Usuario escribe "Ana"</span>
+<span class="cm">// pos = indexOf("Ana") → 1</span>
+<span class="cm">// notas.get(1) → 7</span>
+<span class="cm">// salida: "Ana → nota: 7"</span></pre>
+    </div>
+
+    <div class="tip">
+      <div class="tip-titulo">indexOf() hace la búsqueda lineal por vos</div>
+      <p>No necesitás escribir el for — <code>indexOf()</code> lo hace internamente. Lo que sí necesitás es usar esa posición para acceder a la otra lista con <code>notas.get(pos)</code>. La posición es el puente entre las dos listas.</p>
     </div>
   </section>
 
@@ -637,7 +784,7 @@ System.<span class="fn">out</span>.println(<span class="st">"Inserción: "</span
         <!-- nuevo medio: 7 (encontrado) -->
         <rect x="238" y="144" width="42" height="54" rx="5" fill="#0f2a1a" stroke="#22c55e" stroke-width="2.5"/>
         <text x="259" y="174" font-family="JetBrains Mono,monospace" font-size="16" fill="#4ade80" text-anchor="middle" font-weight="600">7</text>
-        <text x="259" y="190" font-family="Sora,sans-serif" font-size="9" fill="#4ade80" text-anchor="middle">¡encontrado!</text>
+        <text x="259" y="190" font-family="Sora,sans-serif" font-size="9" fill="#4ade80" text-anchor="middle">encontrado! ✓</text>
         <rect x="286" y="152" width="42" height="38" rx="5" fill="#1e1e38" stroke="#2a2a4a" stroke-width="1.2"/>
         <text x="307" y="176" font-family="JetBrains Mono,monospace" font-size="14" fill="#82aaff" text-anchor="middle">8</text>
         <rect x="334" y="152" width="42" height="38" rx="5" fill="#1e1e38" stroke="#2a2a4a" stroke-width="1.2"/>
@@ -657,31 +804,100 @@ System.<span class="fn">out</span>.println(<span class="st">"Inserción: "</span
     </div>
 
     <div class="subtitulo">Código completo</div>
-    <div class="codigo-bloque">
-      <div class="codigo-header"><span class="codigo-lang">JAVA</span><span class="codigo-desc">Búsqueda binaria (el array debe estar ordenado)</span></div>
-      <pre><span class="kw">static</span> <span class="tp">int</span> <span class="fn">busquedaBinaria</span>(<span class="tp">int</span>[] numeros, <span class="tp">int</span> objetivo) {
+    <div class="comparacion">
+      <div class="comp-bloque">
+        <div class="comp-header" style="background:rgba(249,115,22,.15);color:#fb923c;">Array  int[]</div>
+        <pre style="background:rgba(249,115,22,.04);border:1px solid rgba(249,115,22,.2);border-top:none;border-radius:0 0 10px 10px;padding:14px;font-size:12px;font-family:'JetBrains Mono',monospace;line-height:1.8;overflow-x:auto;"><span class="kw">static</span> <span class="tp">int</span> <span class="fn">busquedaBinaria</span>(
+        <span class="tp">int</span>[] nums, <span class="tp">int</span> objetivo) {
     <span class="tp">int</span> inicio = <span class="nm">0</span>;
-    <span class="tp">int</span> fin    = numeros.length - <span class="nm">1</span>;
-
+    <span class="tp">int</span> fin    = nums.length - <span class="nm">1</span>;
     <span class="kw">while</span> (inicio &lt;= fin) {
         <span class="tp">int</span> medio = (inicio + fin) / <span class="nm">2</span>;
-
-        <span class="kw">if</span> (numeros[medio] == objetivo) {
-            <span class="kw">return</span> medio;          <span class="cm">// encontrado</span>
-        } <span class="kw">else if</span> (numeros[medio] &lt; objetivo) {
-            inicio = medio + <span class="nm">1</span>;    <span class="cm">// buscar en la mitad derecha</span>
-        } <span class="kw">else</span> {
-            fin = medio - <span class="nm">1</span>;       <span class="cm">// buscar en la mitad izquierda</span>
-        }
+        <span class="kw">if</span> (nums[medio] == objetivo)
+            <span class="kw">return</span> medio;
+        <span class="kw">else if</span> (nums[medio] &lt; objetivo)
+            inicio = medio + <span class="nm">1</span>;
+        <span class="kw">else</span>
+            fin = medio - <span class="nm">1</span>;
     }
-    <span class="kw">return</span> <span class="nm">-1</span>;  <span class="cm">// no encontrado</span>
-}</pre>
+    <span class="kw">return</span> <span class="nm">-1</span>;
+}
+
+<span class="cm">// Uso en main():</span>
+<span class="cm">// ⚠ array debe estar ordenado</span>
+<span class="tp">int</span>[] nums = {<span class="nm">1</span>,<span class="nm">3</span>,<span class="nm">4</span>,<span class="nm">5</span>,<span class="nm">7</span>,<span class="nm">8</span>,<span class="nm">9</span>};
+<span class="tp">int</span> pos = <span class="fn">busquedaBinaria</span>(nums, <span class="nm">7</span>);
+<span class="cm">// pos → 4</span></pre>
+      </div>
+      <div class="comp-bloque">
+        <div class="comp-header" style="background:rgba(56,189,248,.15);color:#38bdf8;">ArrayList&lt;Integer&gt;</div>
+        <pre style="background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.2);border-top:none;border-radius:0 0 10px 10px;padding:14px;font-size:12px;font-family:'JetBrains Mono',monospace;line-height:1.8;overflow-x:auto;"><span class="kw">static</span> <span class="tp">int</span> <span class="fn">busquedaBinaria</span>(
+        <span class="tp">ArrayList</span>&lt;<span class="tp">Integer</span>&gt; nums,
+        <span class="tp">int</span> objetivo) {
+    <span class="tp">int</span> inicio = <span class="nm">0</span>;
+    <span class="tp">int</span> fin    = nums.<span class="fn">size</span>() - <span class="nm">1</span>;
+    <span class="kw">while</span> (inicio &lt;= fin) {
+        <span class="tp">int</span> medio = (inicio + fin) / <span class="nm">2</span>;
+        <span class="kw">if</span> (nums.<span class="fn">get</span>(medio) == objetivo)
+            <span class="kw">return</span> medio;
+        <span class="kw">else if</span> (nums.<span class="fn">get</span>(medio) &lt; objetivo)
+            inicio = medio + <span class="nm">1</span>;
+        <span class="kw">else</span>
+            fin = medio - <span class="nm">1</span>;
+    }
+    <span class="kw">return</span> <span class="nm">-1</span>;
+}
+
+<span class="cm">// Uso en main():</span>
+<span class="cm">// ⚠ lista debe estar ordenada</span>
+<span class="tp">ArrayList</span>&lt;<span class="tp">Integer</span>&gt; nums = <span class="kw">new</span> <span class="fn">ArrayList</span>&lt;&gt;();
+<span class="cm">// (cargar y ordenar antes)</span>
+<span class="tp">int</span> pos = <span class="fn">busquedaBinaria</span>(nums, <span class="nm">7</span>);
+<span class="cm">// pos → índice del 7</span></pre>
+      </div>
     </div>
 
     <div class="errores">
       <div class="errores-titulo">⚠ Error crítico</div>
       <div class="error-item"><span class="error-icon">✗</span><span class="error-txt">Usar búsqueda binaria sobre un array <strong>no ordenado</strong> — el algoritmo va a dar resultados incorrectos sin dar error. Siempre ordenar antes con inserción o burbuja.</span></div>
       <div class="error-item"><span class="error-icon">✗</span><span class="error-txt">Olvidar actualizar <code>inicio</code> o <code>fin</code> — el while quedaría infinito.</span></div>
+    </div>
+
+    <div class="subtitulo">Ejemplo con listas paralelas</div>
+    <p class="explicacion">La binaria sobre listas paralelas requiere que las listas estén ordenadas por el campo que buscás. Una vez ordenadas, la búsqueda es muy eficiente.</p>
+    <div class="codigo-bloque">
+      <div class="codigo-header"><span class="codigo-lang">JAVA</span><span class="codigo-desc">Búsqueda binaria sobre listas paralelas — buscar por nota</span></div>
+      <pre><span class="kw">static</span> <span class="tp">int</span> <span class="fn">buscarPorNota</span>(
+        <span class="tp">ArrayList</span>&lt;<span class="tp">Integer</span>&gt; notas,
+        <span class="tp">int</span> objetivo) {
+    <span class="cm">// Requiere lista de notas ordenada de menor a mayor</span>
+    <span class="tp">int</span> inicio = <span class="nm">0</span>;
+    <span class="tp">int</span> fin    = notas.<span class="fn">size</span>() - <span class="nm">1</span>;
+    <span class="kw">while</span> (inicio &lt;= fin) {
+        <span class="tp">int</span> medio = (inicio + fin) / <span class="nm">2</span>;
+        <span class="kw">if</span> (notas.<span class="fn">get</span>(medio) == objetivo)
+            <span class="kw">return</span> medio;         <span class="cm">// retorna la posición</span>
+        <span class="kw">else if</span> (notas.<span class="fn">get</span>(medio) &lt; objetivo)
+            inicio = medio + <span class="nm">1</span>;
+        <span class="kw">else</span>
+            fin = medio - <span class="nm">1</span>;
+    }
+    <span class="kw">return</span> <span class="nm">-1</span>;
+}
+
+<span class="cm">// Uso en main():</span>
+<span class="cm">// (listas ya ordenadas de menor a mayor)</span>
+<span class="cm">// nombres: [Sol,  Ana, Luis]</span>
+<span class="cm">// notas:   [6,    7,   9   ]</span>
+<span class="tp">int</span> pos = <span class="fn">buscarPorNota</span>(notas, <span class="nm">7</span>);
+<span class="cm">// pos → 1</span>
+<span class="cm">// nombres.get(1) → "Ana"</span>
+System.<span class="fn">out</span>.println(<span class="st">"Nota 7: "</span> + nombres.<span class="fn">get</span>(pos));</pre>
+    </div>
+
+    <div class="atencion">
+      <div class="atencion-titulo">Orden de la lista importa</div>
+      <p>Si ordenaste de mayor a menor con inserción (desafío 30), la binaria necesita el orden inverso. En ese caso cambiá la condicion <code>&lt;</code> por <code>&gt;</code> en el while. Siempre verificá el orden antes de aplicar búsqueda binaria.</p>
     </div>
 
     <div class="links-bloque">
